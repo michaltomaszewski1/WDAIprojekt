@@ -20,7 +20,9 @@ let scroll = function () {
   }
   window.prevOffset = window.pageYOffset;
   content.style.marginTop = scrollHeader.clientHeight.toString()+'px';
-  mute_button.style.marginTop = scrollHeader.clientHeight.toString()+'px';
+  if (mute_button != null) {
+    mute_button.style.marginTop = scrollHeader.clientHeight.toString() + 'px';
+  }
   setTimeout(scroll, 333);
 }
 window.addEventListener('scroll', scroll);

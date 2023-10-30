@@ -1,0 +1,10 @@
+.correct_answer {
+  background-color: greenyellow;
+}
+.wrong_answer {
+  background-color: red;
+}
+.selected_answer {
+  border-width: 5px;
+  border-color: gold;
+}
