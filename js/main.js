@@ -10,7 +10,7 @@ let scroll = function () {
     return false;
   }
   scrollThrottle = (new Date()).getTime();
-  let tempOffset = window.pageYOffset;
+  let tempOffset = window.scrollY;
 
   if(tempOffset > window.prevOffset + 25 || tempOffset < 100) {
     scrollHeader.style.top = '-' + scrollHeader.clientHeight.toString() + 'px';
@@ -18,7 +18,7 @@ let scroll = function () {
   if (tempOffset < window.prevOffset - 25 || tempOffset < 75) {
     scrollHeader.style.top = '0px';
   }
-  window.prevOffset = window.pageYOffset;
+  window.prevOffset = window.scrollY;
   content.style.marginTop = scrollHeader.clientHeight.toString()+'px';
   if (mute_button != null) {
     mute_button.style.marginTop = scrollHeader.clientHeight.toString() + 'px';

@@ -5,15 +5,40 @@ let answered = [];
 
 let questionList = [
   {
-    question: "test1",
-    answers: ['a', 'b', 'c'],
+    question: 'Czy picie alkoholu jest zdrowe?',
+    answers: ['Tak', 'Nie', 'Nie wiem'],
     correctAnswerID: 0
   },
   {
-    question: "test2",
-    answers: ['a', 'b', 'c'],
+    question: 'Ile procent ma Romper Extreme?',
+    answers: ['6%', '8,3%', '12%', '13,5%'],
+    correctAnswerID: 2
+  },
+  {
+    question: 'Wolisz Perłę Eksport czy Chmielową?',
+    answers: ['Eksport', 'Chmielowa', 'Bez różnicy'],
     correctAnswerID: 1
-  }
+  },
+  {
+    question: 'Czy każde piwo jest smakowe?',
+    answers: ['Tak', 'Nie'],
+    correctAnswerID: 0
+  },
+  {
+    question: 'Ile promili można mieć przed utratą przytomności?',
+    answers: ['2‰', '4‰', '6‰', 'Nie wiem'],
+    correctAnswerID: 3
+  },
+  {
+    question: 'Ile kosztuje czteropak Kustosza?',
+    answers: ['8zł', '10zł', '12zł', '16zł'],
+    correctAnswerID: 0
+  },
+  {
+    question: 'Podobał ci się quiz?',
+    answers: ['Tak', 'Nie'],
+    correctAnswerID: 0
+  },
 ]
 function showQuestions(questions, quizContainer) {
   let output =[];
@@ -23,13 +48,15 @@ function showQuestions(questions, quizContainer) {
     answers = [];
     for (let j = 0; j < questions[i].answers.length; j++) {
       answers.push(
-        '<button class="quizanswer" id="answer_' + i + '_' + j + '">'
+        '<button id="answer_' + i + '_' + j + '">'
         + questions[i].answers[j] + '</button>'
       );
     }
     output.push(
-      '<div class="question">' + questions[i].question + '</div>'
-      + '<div class="answers">' + answers.join('') + '</div>'
+      '<div class="question_wrapper">' +
+      '<div class="question">' + questions[i].question + '</div>' +
+      '<div class="answers">' + answers.join('') + '</div>' +
+      '</div>'
     );
   }
   quizContainer.innerHTML = output.join('');
@@ -38,7 +65,7 @@ function showQuestions(questions, quizContainer) {
 
 function validate(answerString, questions) {
   let answerID = answerString.split('_');
-  console.log(answerID);
+  // console.log(answerID);
   if (answerID[1] in answered) {
     return;
   }
@@ -71,7 +98,23 @@ function colorAnswers(questionID, questions) {
   }
 }
 function showResults(resultsContainer) {
-  resultsContainer.innerHTML = `twój wynik to: ${correct}/${questionList.length}`;
+  let resultMessages = [
+    `Wow! Uzyskałeś aż ${correct}/${questionList.length} punktów!<br>
+    Jesteś prawdziwym smakoszem`,
+    `Zdobyłeś ${correct}/${questionList.length} punktów!<br>
+    Całkiem niezły wynik`,
+    `Tylko ${correct}/${questionList.length} punktów?<br>
+    Nie jesteś prawdziwym smakoszem`
+  ]
+  // let output = [];
+  if (correct/questionList.length === 1) {
+    resultsContainer.innerHTML = '<p>' + resultMessages[0] + '</p>';
+  } else if (correct/questionList.length >= 0.7) {
+    resultsContainer.innerHTML = '<p>' + resultMessages[1] + '</p>';
+  }else {
+    resultsContainer.innerHTML = '<p>' + resultMessages[2] + '</p>';
+  }
+  resultsContainer.scrollIntoView();
 }
 
 const questionAnswered = e => {

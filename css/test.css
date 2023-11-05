@@ -1,10 +1,51 @@
-.correct_answer {
-  background-color: greenyellow;
+.question_wrapper {
+  margin-bottom: 2em;
+  background-color: #f3efc3;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  border-radius: 10px;
+
+  .question {
+    padding-bottom: 0.5em;
+  }
+  .correct_answer {
+    background-color: greenyellow !important;
+  }
+
+  .wrong_answer {
+    background-color: red !important;
+  }
+
+  .selected_answer {
+    outline: black inset 0.2em;
+  }
+
+  .answers {
+    display: flex;
+    justify-content: center;
+  }
+
+  .answers > * {
+    flex: 1;
+    margin-left: 1em;
+    margin-right: 1em;
+    max-width: max(30%, 25vw);
+    border-width: 0;
+    border-radius: 5px;
+    background-color: #e5db45;
+  }
 }
-.wrong_answer {
-  background-color: red;
+.quiz_results {
+  font-size: larger;
 }
-.selected_answer {
-  border-width: 5px;
-  border-color: gold;
+
+@media screen and (max-width: 600px){
+  .answers {
+    flex-direction: column;
+  }
+  .answers > * {
+    max-width: 95% !important;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+  }
 }
