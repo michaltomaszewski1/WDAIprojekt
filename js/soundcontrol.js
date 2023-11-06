@@ -13,10 +13,7 @@ switch (pathname) {
 let icon = document.getElementById('mute_icon');
 sound.autoplay = true;
 sound.volume = 0.2;
-if (sound.paused) {
-  icon.src = 'img/muted_icon.svg'
-}
-function play_pause () {
+function playPause () {
   if (sound.paused || sound.ended) {
     sound.play();
     icon.src = 'img/playing_icon.svg';
@@ -26,3 +23,13 @@ function play_pause () {
     icon.src = 'img/muted_icon.svg';
   }
 }
+function checkAutoplay () {
+  if (sound.paused) {
+    icon.src = 'img/muted_icon.svg';
+  }
+  else {
+    icon.src = 'img/playing_icon.svg';
+  }
+}
+
+setTimeout(checkAutoplay, 300);
