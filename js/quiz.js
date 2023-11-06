@@ -7,7 +7,7 @@ let questionList = [
   {
     question: 'Czy picie alkoholu jest zdrowe?',
     answers: ['Tak', 'Nie', 'Nie wiem'],
-    correctAnswerID: 0
+    correctAnswerID: 1
   },
   {
     question: 'Ile procent ma Romper Extreme?',
@@ -25,9 +25,9 @@ let questionList = [
     correctAnswerID: 0
   },
   {
-    question: 'Ile promili można mieć przed utratą przytomności?',
-    answers: ['2‰', '4‰', '6‰', 'Nie wiem'],
-    correctAnswerID: 3
+    question: 'Co widnieje w logo Żubra?',
+    answers: ['Piwo', 'Koza', 'Janosik', 'Tancerz', 'Żubr'],
+    correctAnswerID: 4
   },
   {
     question: 'Ile kosztuje czteropak Kustosza?',
